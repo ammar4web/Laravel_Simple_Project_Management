@@ -9,6 +9,8 @@ class Project extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['title', 'description', 'user_id', 'status'];
+
     public function user()
     {
         // To make a relationship between this Model (Project) and another one (User). 
