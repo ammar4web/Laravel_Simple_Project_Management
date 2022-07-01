@@ -37,7 +37,9 @@
                             </h5>
 
                             <div class="card-text mt-4">
-                                {{ $project->description }}
+                                {{-- Str::limit('string', max_letter_number) --}}
+                                {{-- It will determine the length of the displayed text string --}}
+                                {{ Str::limit($project->description, 150) }}
                             </div>
 
                             @include('projects.footer')

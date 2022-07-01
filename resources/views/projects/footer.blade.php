@@ -10,15 +10,18 @@
         </div>
 
         <div class="d-flex align-items-center">
-           <img src="/images/list-check.svg" alt="">
+            <img src="/images/list-check.svg" alt="">
             <div class="mr-2">
             </div>
         </div>
-        <div class="d-flex align-items-center mr-auto">
+        {{-- Bootstrap 4 --}}
+        {{-- <div class="d-flex align-items-center mr-auto"> --}}
+        {{-- Bootstrap 5 --}}
+        <div class="d-flex align-items-center me-auto">
             <form action="/projects/{project}" method="POST">
-                @method("DELETE")
+                @method('DELETE')
                 @csrf
-                <input type="submit">
+                <input type="submit" class="btn-delete" value="">
             </form>
         </div>
     </div>
