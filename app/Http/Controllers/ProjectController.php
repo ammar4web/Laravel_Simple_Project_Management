@@ -42,16 +42,20 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        // 
+        // request()->validate([
+            // Associative array
+        // ]); 
         $data = request()->validate([
             'title' => 'required',
             'description' => 'required',
         ]);
 
-        // 
+        // Add user_id to the Associative arry
         $data['user_id'] = auth()->id();
 
-        // 
+        // create([
+            // Associative aray 
+        // ]);
         Project::create($data);
 
         return redirect('/projects');
