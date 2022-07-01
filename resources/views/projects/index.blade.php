@@ -12,11 +12,13 @@
     </header>
 
     <section class="row text-right" dir="rtl">
+        {{-- ForElse is a ForEach loop, but with extra handling for empty array. --}}
         @forelse($projects as $project)
             <div class="col-4 mb-4">
                 <div class="card">
                     <div class="card-body">
                         <div class="status">
+                            {{--  --}}
                             @switch($project->status)
                                 @case(1)
                                     <span class="text-success">مكتمل</span>
@@ -43,6 +45,7 @@
                     </div>
                 </div>
             </div>
+            {{-- for empty array --}}
             @empty
                 <div class="m-auto align-content-center text-center">
                     <p>لوحة العمل خالية من المشاريع</p>
@@ -51,6 +54,7 @@
                             role="button">أنشئ مشروعا جديدا</a>
                     </div>
                 </div>
+                {{-- End forelse --}}
             @endforelse
         </section>
     @endsection

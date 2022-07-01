@@ -11,6 +11,9 @@ class Project extends Model
 
     public function user()
     {
+        // To make a relationship between this Model (Project) and another one (User). 
+        // We write this code when we need to make a 'one to many' relationship 
+        // (this mean that the Project related to only one user)
         return $this->belongsTo(User::class);
     }
 }

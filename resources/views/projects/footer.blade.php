@@ -3,6 +3,8 @@
         <div class="d-flex align-items-center">
             <img src="/images/clock.svg" alt="">
             <div class="mr-2">
+                {{-- created_at->diffForHumans() --}}
+                {{-- to shows the elapsed time between project creation and now. --}}
                 {{ $project->created_at->diffForHumans() }}
             </div>
         </div>

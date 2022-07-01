@@ -42,6 +42,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    // To make a relationship between this Model (Project) and another one (User). 
+    // We write this code when we need to make a 'one to many' relationship 
+    // (this mean that the user can have many projects)
     public function projects()
     {
         return $this->hasMany(Project::class);
