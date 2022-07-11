@@ -43,7 +43,7 @@ class ProjectController extends Controller
     public function store(Request $request)
     {
         // request()->validate([
-            // Associative array
+        // Associative array
         // ]); 
         $data = request()->validate([
             'title' => 'required',
@@ -54,7 +54,7 @@ class ProjectController extends Controller
         $data['user_id'] = auth()->id();
 
         // create([
-            // Associative aray 
+        // Associative aray 
         // ]);
         Project::create($data);
 
@@ -69,7 +69,7 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
-        //
+        return view('projects.show', compact('project'));
     }
 
     /**
@@ -92,7 +92,11 @@ class ProjectController extends Controller
      */
     public function update(Request $request, Project $project)
     {
-        //
+        $project->update([
+            'status' => request('status')
+        ]);
+
+        return redirect('/projects/' . $project->id);
     }
 
     /**
@@ -103,6 +107,5 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
-        //
     }
 }
