@@ -47,7 +47,12 @@
                     <form action="/projects/{{ $project->id }}" method="POST">
                         @csrf
                         @method('PATCH')
-                        <select name="status" class="custom-select" onchange="this.form.submit()">
+                        {{-- onchange="this.form.submit()
+                                It means each time the value marked in the drop-down list will be changed 
+                                the form will be sent to the server. --}}
+                        <select name="status" class="form-select" onchange="this.form.submit()">
+                            {{-- {{ $project->status == 0 ? 'selected' : '' }}
+                                it means the 'selected' is related to the 'if' condition --}}
                             <option value="0" {{ $project->status == 0 ? 'selected' : '' }}>قيد الإنجاز</option>
                             <option value="1" {{ $project->status == 1 ? 'selected' : '' }}>مكتمل</option>
                             <option value="2" {{ $project->status == 2 ? 'selected' : '' }}>ملغي</option>
