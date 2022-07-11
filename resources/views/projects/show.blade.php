@@ -64,7 +64,33 @@
 
         {{-- Tasks --}}
         <div class="col-lg-8">
-            {{-- Tasks --}}
+            @foreach ($project->tasks as $task)
+                <div class="card p-3 mb-3 d-flex flex-row align-items-center">
+                    <div class="{{ $task->done ? 'checked text-muted' : '' }}">
+                        {{ $task->body }}
+                    </div>
+
+                    <div class="d-flex me-auto">
+                        <form action="/projects/{{ $task->project->id }}/tasks/{{ $task->id }}" method="POST">
+                            @csrf
+                            @method('PATCH')
+                            <div class="form-check">
+                                <input type="checkbox" name="done" onchange="this.form.submit()"
+                                    class="form-check-input me-4" {{ $task->done ? 'checked' : '' }}>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            @endforeach
+            <div class="card">
+                <form method="POST" action="/projects/{{ $project->id }}/tasks" class="p-3 d-flex">
+                    @csrf
+                    <input type="text" name="body" class="form-control p-2 ml-2" placeholder="أضف مهمة جديدة">
+                    <button type="submit" class="btn btn-primary">أضف</button>
+                </form>
+
+            </div>
         </div>
     </section>
 @endsection

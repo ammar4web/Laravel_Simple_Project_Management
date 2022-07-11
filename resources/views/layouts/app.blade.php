@@ -31,6 +31,10 @@
             border: 0px;
             outline: none;
         }
+
+        .checked {
+            text-decoration: line-through;
+        }
     </style>
 </head>
 

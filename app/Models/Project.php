@@ -18,4 +18,9 @@ class Project extends Model
         // (this mean that the Project related to only one user)
         return $this->belongsTo(User::class);
     }
+
+    public function tasks()
+    {
+        return $this->hasMany(Task::class);
+    }
 }
