@@ -11,14 +11,15 @@
 
         <div class="d-flex align-items-center">
             <img src="/images/list-check.svg" alt="">
-            <div class="mr-2">
+            <div class="me-2">
+                {{ count($project->tasks) }}
             </div>
         </div>
         {{-- Bootstrap 4 --}}
         {{-- <div class="d-flex align-items-center mr-auto"> --}}
         {{-- Bootstrap 5 --}}
         <div class="d-flex align-items-center me-auto">
-            <form action="/projects/{project}" method="POST">
+            <form action="/projects/{{ $project->id }}" method="POST">
                 @method('DELETE')
                 @csrf
                 <input type="submit" class="btn-delete" value="">

@@ -80,6 +80,15 @@
                             </div>
                         </form>
 
+                        <div class="d-flex align-items-center">
+                            <form method="POST" action="/projects/{{ $task->project->id }}/tasks/{{ $task->id }}"
+                                class="hide-submit">
+                                @csrf
+                                @method('DELETE')
+                                <input type="submit" class="btn btn-delete mt-1" value="">
+                            </form>
+                        </div>
+
                     </div>
                 </div>
             @endforeach

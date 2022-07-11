@@ -29,3 +29,4 @@ Route::resource('/projects', ProjectController::class);
 
 Route::post('/projects/{project}/tasks', [TaskController::class, 'store']);
 Route::patch('/projects/{project}/tasks/{task}', [TaskController::class, 'update']);
+Route::delete('/projects/{project}/tasks/{task}', [TaskController::class, 'destroy']);
