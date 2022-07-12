@@ -1,9 +1,11 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\TaskController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Symfony\Component\HttpKernel\Profiler\Profile;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,16 +19,20 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [ProjectController::class, 'index'])->name('home')->middleware('auth');
 
-Route::resource('/projects', ProjectController::class);
+Route::resource('/projects', ProjectController::class)->middleware('auth');
 // Route::resource('/projects', ProjectController::class)->middleware('auth');
 
-Route::post('/projects/{project}/tasks', [TaskController::class, 'store']);
-Route::patch('/projects/{project}/tasks/{task}', [TaskController::class, 'update']);
-Route::delete('/projects/{project}/tasks/{task}', [TaskController::class, 'destroy']);
+Route::post('/projects/{project}/tasks', [TaskController::class, 'store'])->middleware('auth');
+Route::patch('/projects/{project}/tasks/{task}', [TaskController::class, 'update'])->middleware('auth');
+Route::delete('/projects/{project}/tasks/{task}', [TaskController::class, 'destroy'])->middleware('auth');
+
+Route::get('/profile', [ProfileController::class, 'index'])->middleware('auth');
+
+Route::patch('/profile', [ProfileController::class, 'update'])->middleware('auth');
