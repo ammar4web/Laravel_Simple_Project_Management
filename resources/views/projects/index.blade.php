@@ -14,7 +14,7 @@
     <section class="row text-right" dir="rtl">
         {{-- ForElse is a ForEach loop, but with extra handling for empty array. --}}
         @forelse($projects as $project)
-            <div class="col-4 mb-4">
+            <div class="col-12 col-md-4 mb-4">
                 <div class="card">
                     <div class="card-body">
                         <div class="status">
